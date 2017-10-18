@@ -5,10 +5,10 @@
 #include <iostream>
 #define LINHA 0
 #define COLUNA 1
-char mapa[3][20];
 int per;
 int obj = 21;
 int jump = 0;
+int velocidade = 100000;
 
 void mostraPersonagem(){
         if(per == 2)
@@ -66,6 +66,7 @@ void moveInimigo(){
     obj--;
     if(obj < -2){
         obj = 21;
+        velocidade -= 5000;
     }
 }
 
@@ -75,10 +76,10 @@ int main(){
         controleJump();
         mostraMapa();
         moveInimigo();
-        usleep(100000);
         if(obj == 1 && per == 0){
             return 0;
         }
+        usleep(velocidade);
     }
     return 0;
 }
